@@ -1,0 +1,11 @@
+# Dependencies พื้นฐาน
+numpy
+opencv-python-headless
+cython
+Pillow
+
+# ONNX Runtime (สำคัญมาก: บน M1 Linux Container ใช้เวอร์ชัน CPU ปกติเสถียรสุด)
+onnxruntime
+
+# พระเอกของเรา
+insightface

@@ -1,0 +1,28 @@
+{
+  "name": "InsightFace (M1 Arm64)",
+  // "build": {
+  //   "dockerfile": "Dockerfile"
+  // },
+ "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bullseye", 
+  // --- เพิ่มบรรทัดนี้ครับ ---
+  "runArgs": [
+    "--platform=linux/arm64",
+    "--name=insightface_dev"
+  ],
+  // -----------------------
+  "forwardPorts": [8000, 3003],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ]
+    }
+  },
+  // "postCreateCommand": "pip3 install --user -r requirements.txt",
+  // "postCreateCommand": "pip3 install --user --upgrade pip && pip3 install --user -r requirements.txt",
+  "remoteUser": "vscode"
+}
