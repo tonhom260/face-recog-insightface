@@ -7,7 +7,8 @@ app = FaceAnalysis(name='buffalo_l', providers=['CPUExecutionProvider'])
 app.prepare(ctx_id=0, det_size=(640, 640))
 
 # 2. อ่านรูปต้นฉบับ
-filename = "face1.jpg"  # <--- เปลี่ยนเป็นชื่อไฟล์รูปหลักของคุณ
+# filename = "face1.jpg"  # <--- เปลี่ยนเป็นชื่อไฟล์รูปหลักของคุณ
+filename = "bhop2.jpg"  # <--- เปลี่ยนเป็นชื่อไฟล์รูปหลักของคุณ
 img = cv2.imread(filename)
 
 if img is None:

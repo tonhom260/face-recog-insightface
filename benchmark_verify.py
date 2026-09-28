@@ -15,7 +15,10 @@ print("Database loaded.")
 print("------------------------------------------------")
 
 # รูปที่จะเอามาเทส
-test_image_file = "face2.jpg"  # <--- รูปใหม่ที่จะมาสแกน
+# test_image_file = "face2.jpg"  # <--- รูปใหม่ที่จะมาสแกน
+# test_image_file = "bhum.jpg"  # <--- รูปใหม่ที่จะมาสแกน
+# test_image_file = "bhop.jpg"  # <--- รูปใหม่ที่จะมาสแกน
+test_image_file = "bhop2.jpg"  # <--- รูปใหม่ที่จะมาสแกน
 
 # --- เริ่มจับเวลา ---
 total_start = time.time()
