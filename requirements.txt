@@ -1,14 +1,10 @@
-# Dependencies พื้นฐาน
-numpy
-opencv-python-headless
-cython
-Pillow
-
-# ONNX Runtime (สำคัญมาก: บน M1 Linux Container ใช้เวอร์ชัน CPU ปกติเสถียรสุด)
-onnxruntime
-
-# พระเอกของเรา
-insightface
-python-multipart
-fastapi 
-uvicorn
+numpy>=2.0,<2.3
+opencv-python-headless==4.12.0.88
+Pillow>=11,<13
+onnxruntime>=1.20,<2
+python-multipart>=0.0.20,<1
+fastapi>=0.115,<1
+uvicorn[standard]>=0.30,<1
+SQLAlchemy>=2.0,<2.1
+psycopg[binary]>=3.2,<4
+argon2-cffi>=25,<26

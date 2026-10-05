@@ -1,0 +1,3 @@
+# Optional browser QA dependencies; system Chromium and ffmpeg are also required.
+-r requirements-dev.txt
+playwright==1.62.0

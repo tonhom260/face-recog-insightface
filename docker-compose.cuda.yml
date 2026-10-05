@@ -1,0 +1,7 @@
+services:
+  app:
+    build:
+      target: cuda
+    environment:
+      ATTENDANCE_INFERENCE_DEVICE: cuda
+    gpus: all

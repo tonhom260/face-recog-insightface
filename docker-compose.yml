@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:16-bookworm
+    environment:
+      POSTGRES_DB: attendance
+      POSTGRES_USER: attendance
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env; no password is shipped}
+    volumes:
+      - attendance-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U attendance -d attendance"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+  app:
+    build:
+      context: .
+      target: cpu
+      args:
+        VITE_MIN_FACE_LUMA: ${VITE_MIN_FACE_LUMA:-45}
+    environment:
+      ATTENDANCE_DATABASE_URL: ${ATTENDANCE_DATABASE_URL:?Set a postgresql+psycopg database URL in .env}
+      ATTENDANCE_MODEL_DIR: /app/.local/models
+      ATTENDANCE_INFERENCE_DEVICE: ${ATTENDANCE_INFERENCE_DEVICE:-cpu}
+      ATTENDANCE_FACE_THRESHOLD: ${ATTENDANCE_FACE_THRESHOLD:-0.363}
+      ATTENDANCE_COOKIE_SECURE: ${ATTENDANCE_COOKIE_SECURE:-true}
+      FORWARDED_ALLOW_IPS: ${FORWARDED_ALLOW_IPS:-127.0.0.1}
+    volumes:
+      - ./.local/models:/app/.local/models:ro
+    ports:
+      - "${ATTENDANCE_BIND_ADDRESS:-127.0.0.1}:${ATTENDANCE_PORT:-8000}:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+volumes:
+  attendance-postgres:
